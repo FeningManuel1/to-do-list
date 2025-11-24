@@ -107,7 +107,7 @@ function App() {
           onAdd={addTodo}
         />
       </Hero>
-      <div className="flex justify-center pt-8">
+      <div className="flex justify-center pt-4">
       <TodoBoard
         isDark={isDark}
         todos={todos}

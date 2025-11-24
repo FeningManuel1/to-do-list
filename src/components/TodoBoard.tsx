@@ -8,7 +8,7 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
   const boardBg = isDark ? 'bg-slate-900/80' : 'bg-white';
   const textColor = isDark ? 'text-slate-100' : 'text-slate-900';
   const footerText = isDark ? 'text-slate-400' : 'text-slate-500';
-  const borderColor = isDark ? 'border-slate-700' : 'border-slate-200';
+  const borderColor = isDark ? 'border-slate-700' : 'border-slate-500';
 
   const [filter, setFilter] = useState<FilterType>('All');
 
