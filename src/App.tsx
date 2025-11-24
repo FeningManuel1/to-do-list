@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import bgDesktopDark from './assets/bg-desktop-dark.jpg'
 import bgDesktopLight from './assets/bg-desktop-light.jpg'
+import bgMobileDark from './assets/bg-mobile-dark.jpg'
+import bgMobileLight from './assets/bg-mobile-light.jpg'
 import iconMoon from './assets/icon-moon.svg'
 import iconSun from './assets/icon-sun.svg'
 import Hero from './components/Hero'
@@ -21,10 +23,10 @@ function App() {
   // check if dark mode
   const isDark = theme === 'dark'
   
-  // pick the right background image
-  let bgImage = bgDesktopDark
-  if (!isDark) {
-    bgImage = bgDesktopLight
+  // pick the right background image set based on theme
+  const heroBackgrounds = {
+    desktop: isDark ? bgDesktopDark : bgDesktopLight,
+    mobile: isDark ? bgMobileDark : bgMobileLight
   }
   
   // pick the right icon
@@ -74,6 +76,12 @@ function App() {
     setTodos(activeTodos)
   }
 
+  // function to delete a single todo
+  function deleteTodo(id: number) {
+    const updatedTodos = todos.filter(todo => todo.id !== id)
+    setTodos(updatedTodos)
+  }
+
   // function to switch theme
   function switchTheme() {
     if (isDark) {
@@ -87,7 +95,8 @@ function App() {
     <div className={isDark ? 'bg-slate-950 min-h-screen' : 'bg-slate-100 min-h-screen'}>
       <Hero 
         isDark={isDark}
-        bgImage={bgImage}
+        bgDesktop={heroBackgrounds.desktop}
+        bgMobile={heroBackgrounds.mobile}
         themeIcon={themeIcon}
         onThemeClick={switchTheme}
       >
@@ -106,6 +115,7 @@ function App() {
         filterButtons={filterButtons}
         onToggle={toggleTodo}
         onClear={clearCompleted}
+        onDelete={deleteTodo}
       />
       </div>
     </div>

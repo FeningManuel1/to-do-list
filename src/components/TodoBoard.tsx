@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
-
+import iconCross from '../assets/icon-cross.svg';
 
 type FilterType = 'All' | 'Active' | 'Completed';
 
-function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear }: any) {
+function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: any) {
   // styles
   const boardBg = isDark ? 'bg-slate-900/80' : 'bg-white';
   const textColor = isDark ? 'text-slate-100' : 'text-slate-900';
@@ -53,9 +53,18 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear }: any) {
               </button>
 
               {/* todo text */}
-              <span className={isCompleted ? 'text-slate-500 line-through' : ''}>
+              <span className={`flex-1 ${isCompleted ? 'text-slate-500 line-through' : ''}`}>
                 {todo.text}
               </span>
+
+              {/* delete button */}
+              <button
+                onClick={() => onDelete(todo.id)}
+                className="p-1 hover:scale-110 transition-transform"
+                aria-label="Delete todo"
+              >
+                <img src={iconCross} alt="Delete" className="w-4 h-4" />
+              </button>
             </li>
             );
         })

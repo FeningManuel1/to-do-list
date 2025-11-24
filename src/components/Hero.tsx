@@ -1,11 +1,15 @@
-function Hero({ bgImage, themeIcon, onThemeClick, children }: any) {
+function Hero({ bgDesktop, bgMobile, themeIcon, onThemeClick, children }: any) {
   return (
     <div className="relative h-[30vh]" >
       {/* background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      ></div>
+      <picture className="absolute inset-0">
+        <source media="(min-width: 768px)" srcSet={bgDesktop} />
+        <img 
+          src={bgMobile}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      </picture>
       
       {/* overlay gradient */}
       <div className="inset-0 bg-gradient-to-r from-purple-900/70 to-blue-700/40"></div>
