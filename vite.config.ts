@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-    base: 'to-do-list/',
+    base: '/to-do-list',
 })
