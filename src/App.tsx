@@ -14,7 +14,7 @@ const filterButtons = ['All', 'Active', 'Completed']
 
 function App() {
   // state for dark/light mode
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   // state for the input field
   const [inputValue, setInputValue] = useState('')
   // state for all todos
