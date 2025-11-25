@@ -31,7 +31,7 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
   return (
     <div className={`mx-auto -mt-6 px-6 max-w-lg ${boardBg} ${textColor}`}>
       {filteredTodos.length === 0 ? (
-                <li className="flex items-center gap-4 px-6 py-4 text-slate-400">
+                <li className="flex items-center gap-4 py-4 text-slate-400">
                   <div className={`w-6 h-6 rounded-full border ${borderColor}`}></div>
                   No todos yet. Add one above!
                 </li>
@@ -42,7 +42,7 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
                     ? 'bg-gradient-to-br from-indigo-400 to-purple-400 border-0'
                     : `border ${borderColor}`;
                 return (
-            <li key={todo.id} className="flex items-center gap-4 px-6 py-4">
+            <li key={todo.id} className="flex items-center gap-4 py-4">
               
               {/* checkbox button */}
               <button
@@ -71,10 +71,13 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
       )}
 
              {/* footer */}
-      <div className={`flex flex-wrap items-center justify-between gap-4 px-6 py-4 text-sm ${footerText}`}>
+      <div className={`flex flex-wrap items-center gap-4 py-4 text-sm ${footerText}`}>
+      <div className={`py-4 justify-end text-sm ${footerText}`}>
 
         {/* items left count */}
         <span>{itemsLeft} items left</span>
+
+      </div>
 
         {/* filter buttons */}
         <div className="flex items-center gap-4">
@@ -99,13 +102,16 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
         </div>
 
         {/* clear completed button */}
+         <div className={`flex justify-end gap-4 px-6 text-sm ${footerText}`}>
         <button
           onClick={onClear}
           className={isDark ? 'hover:text-white' : 'hover:text-slate-900'}
         >
           Clear Completed
         </button>
-       </div>
+        </div>
+        </div>
+       
     </div>
   );
 }
