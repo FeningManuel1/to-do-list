@@ -29,7 +29,8 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
 
 
   return (
-    <div className={`mx-auto -mt-6 px-6 max-w-lg ${boardBg} ${textColor}`}>
+    <div className={`mx-auto mt-2 px-6 max-w-lg h-[320px] flex flex-col ${boardBg} ${textColor}`}>
+       <ul className="flex-1 overflow-y-auto">
       {filteredTodos.length === 0 ? (
                 <li className="flex items-center gap-4 py-4 text-slate-400">
                   <div className={`w-6 h-6 rounded-full border ${borderColor}`}></div>
@@ -69,6 +70,7 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
             );
         })
       )}
+       </ul>
 
              {/* footer */}
       <div className={`flex flex-wrap items-center gap-4 py-4 text-sm ${footerText}`}>
