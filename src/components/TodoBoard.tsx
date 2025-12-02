@@ -34,7 +34,7 @@ function TodoBoard({ isDark, todos, itemsLeft, onToggle, onClear, onDelete }: an
       {filteredTodos.length === 0 ? (
                 <li className="flex items-center gap-4 py-4 text-slate-400">
                   <div className={`w-6 h-6 rounded-full border ${borderColor}`}></div>
-                  No todos yet. Add one above!
+                  No todos yet. Add one above!!
                 </li>
               ) : (
                 filteredTodos.map((todo: any) => {
