@@ -13,11 +13,8 @@ import TodoInputCard from './components/TodoInputCard'
 const filterButtons = ['All', 'Active', 'Completed']
 
 function App() {
-  // state for dark/light mode
   const [theme, setTheme] = useState('light')
-  // state for the input field
   const [inputValue, setInputValue] = useState('')
-  // state for all todos
   const [todos, setTodos] = useState([] as Array<{id: number, text: string, completed: boolean}>)
 
   // check if dark mode
@@ -82,6 +79,15 @@ function App() {
     setTodos(updatedTodos)
   }
 
+  const handleReorder = (newOrder: string[]) => {
+    const reorderedTodos = newOrder.map(id => 
+      todos.find(todo => todo.id === Number(id))
+    ).filter(Boolean) as typeof todos;
+    
+    setTodos(reorderedTodos);
+  };
+
+
   // function to switch theme
   function switchTheme() {
     if (isDark) {
@@ -111,6 +117,7 @@ function App() {
       <TodoBoard
         isDark={isDark}
         todos={todos}
+        onReorder={handleReorder}
         itemsLeft={itemsLeft}
         filterButtons={filterButtons}
         onToggle={toggleTodo}
